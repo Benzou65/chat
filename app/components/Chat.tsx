@@ -3,15 +3,17 @@
 import { useChat } from "ai/react";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dark, docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { css } from "@/styled-system/css";
+import { Box, Form, Input } from "@/styled-system/components";
+import { size } from "../constant";
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", flexDirection: "column" }}>
-      <div style={{ display: "block", flexGrow: 1 }}>
+    <Box display="flex" flexWrap="wrap" flexDirection="column">
+      <Box overflowY={"scroll"}>
         {messages.map((message) => (
           <ReactMarkdown
             key={message.id}
@@ -32,22 +34,35 @@ export default function Chat() {
                   </code>
                 );
               },
+              p({ node, className, children, ...props }) {
+                return <p className={css({ color: "white" })}>{children}</p>;
+              },
             }}
           >
             {message.content}
           </ReactMarkdown>
         ))}
-      </div>
-
-      <form
-        onSubmit={handleSubmit}
-        style={{ position: "absolute", bottom: 16 }}
+      </Box>
+      <Box
+        position="fixed"
+        bottom="16px"
+        left="50%"
+        transform="translateX(-50%)"
+        display="flex"
+        justifyContent="center"
       >
-        <label>
-          Say something...
-          <input value={input} onChange={handleInputChange} />
-        </label>
-      </form>
-    </div>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            value={input}
+            onChange={handleInputChange}
+            borderRadius="20px"
+            px="16px"
+            py="8px"
+            width="min(755px, calc(100vw - 32px))"
+            placeholder="Ecrivez un message"
+          />
+        </Form>
+      </Box>
+    </Box>
   );
 }
