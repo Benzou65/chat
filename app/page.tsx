@@ -1,4 +1,4 @@
-import { Box } from "@/styled-system/components";
+import { Box } from "./components/components";
 import { css } from "../styled-system/css";
 import Chat from "./components/Chat";
 import { size } from "./constant";
