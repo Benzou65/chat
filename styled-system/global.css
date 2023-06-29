@@ -33,4 +33,13 @@
     --scale-x: 1;
     --scale-y: 1
     }
+
+  html {
+    background-color: var(--colors-gray-900);
+    height: 100%
+    }
+
+  body {
+    min-height: 100%
+    }
 }

@@ -1,4 +1,14 @@
-import { defineConfig } from "@pandacss/dev";
+import { defineConfig, defineGlobalStyles } from "@pandacss/dev";
+
+const globalCss = defineGlobalStyles({
+  html: {
+    backgroundColor: "gray.900",
+    height: "100%",
+  },
+  body: {
+    minHeight: "100%",
+  },
+});
 
 export default defineConfig({
   // Whether to use css reset
@@ -16,9 +26,18 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
 
+  globalCss,
+
   // Useful for theme customization
   theme: {
-    extend: {},
+    extend: {
+      tokens: {
+        sizes: {
+          headerHeight: { value: "10vw" },
+          footerHeight: { value: "72px" },
+        },
+      },
+    },
   },
 
   // The output directory for your css system
