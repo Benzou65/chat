@@ -46,45 +46,36 @@ export const ChatInput: React.FC<Props> = ({
   }, [input]);
 
   return (
-    <Box
-      position="fixed"
-      bottom="16px"
-      left="50%"
-      transform="translateX(-50%)"
-      display="flex"
-      justifyContent="center"
-    >
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <TextArea
-          ref={textAreaRef}
-          value={input}
-          onChange={handleInputChange}
-          onKeyDown={onEnterPress}
-          borderRadius="20px"
-          px="16px"
-          py="8px"
-          width="min(755px, calc(100vw * 0.8))"
-          placeholder="Écrivez un message"
-          rows={1}
-          autoFocus
-          overflow="hidden"
-          resize="none"
+    <Form ref={formRef} onSubmit={handleSubmit}>
+      <TextArea
+        ref={textAreaRef}
+        value={input}
+        onChange={handleInputChange}
+        onKeyDown={onEnterPress}
+        borderRadius="20px"
+        px="16px"
+        py="8px"
+        width="min(755px, calc(100vw * 0.8))"
+        placeholder="Écrivez un message"
+        rows={1}
+        autoFocus
+        overflow="hidden"
+        resize="none"
+      />
+      <Button
+        type="submit"
+        position="relative"
+        right="40px"
+        bottom="calc((40px - 30px) / 2)"
+        cursor={"pointer"}
+      >
+        <SendIcon
+          fill={input === "" ? "#FFFFFF" : "#CC5AB9"}
+          width={30}
+          height={30}
+          shapeRendering={"geometricPrecision"}
         />
-        <Button
-          type="submit"
-          position="absolute"
-          right="10px"
-          bottom="calc(40px - 30px)"
-          cursor={"pointer"}
-        >
-          <SendIcon
-            fill={input === "" ? "#FFFFFF" : "#CC5AB9"}
-            width={30}
-            height={30}
-            shapeRendering={"geometricPrecision"}
-          />
-        </Button>
-      </Form>
-    </Box>
+      </Button>
+    </Form>
   );
 };

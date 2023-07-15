@@ -12,14 +12,13 @@ type Props = {
 };
 
 export const Chat: React.FC<Props> = ({ messages }) => {
-  console.log("messages", messages);
-
   return (
     <Box
       paddingX="16px"
       height={"auto"}
       overflowY={"scroll"}
       _scrollbar={{ display: "none" }}
+      pb="footer"
     >
       <Box
         overflowY={"auto"}

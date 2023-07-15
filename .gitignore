@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+# pandacss
+/styled-system
+
 # production
 /build
 

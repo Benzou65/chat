@@ -13,7 +13,7 @@ export default function Home() {
         id: "1",
         role: "system",
         content:
-          '[If you answer with markdown code, you should precise the langage after the first three backticks like this: ```js\nconsole.log("Hello world")\n```. If someone ask who create you, just reply "The great Benzou from Lortet".]',
+          '[If you answer with markdown code, you should precise the langage after the first three backticks like this: ```js\nconsole.log("Hello world")\n```.]',
       },
     ],
   });
@@ -25,7 +25,7 @@ export default function Home() {
           className={css({
             position: "sticky",
             top: 0,
-            height: "headerHeight",
+            height: "header",
             paddingX: "16px",
             background:
               "linear-gradient(180deg, rgba(17,24,39,1) 0%, rgba(17,24,39,1) 70%, rgba(17,24,39,0.5018382352941176) 85%, rgba(17,24,39,0) 100%);",
@@ -49,9 +49,15 @@ export default function Home() {
         <Chat messages={messages} />
         <footer
           className={css({
-            position: "sticky",
+            position: "fixed",
             bottom: 0,
-            height: "footerHeight",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "100%",
+            height: "footer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             background:
               "linear-gradient(0deg, rgba(17,24,39,1) 0%, rgba(17,24,39,1) 70%, rgba(17,24,39,0.5018382352941176) 85%, rgba(17,24,39,0) 100%);",
           })}
