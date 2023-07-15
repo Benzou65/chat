@@ -46,14 +46,7 @@ export const ChatInput: React.FC<Props> = ({
   }, [input]);
 
   return (
-    <Box
-      position="fixed"
-      bottom="16px"
-      left="50%"
-      transform="translateX(-50%)"
-      display="flex"
-      justifyContent="center"
-    >
+    <Box display="flex" justifyContent="center">
       <Form ref={formRef} onSubmit={handleSubmit}>
         <TextArea
           ref={textAreaRef}
@@ -74,7 +67,7 @@ export const ChatInput: React.FC<Props> = ({
           type="submit"
           position="absolute"
           right="10px"
-          bottom="calc(40px - 30px)"
+          top="calc((40px - 30px) / 2)"
           cursor={"pointer"}
         >
           <SendIcon

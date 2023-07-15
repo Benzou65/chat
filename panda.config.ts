@@ -1,4 +1,5 @@
 import { defineConfig, defineGlobalStyles } from "@pandacss/dev";
+import benzouPreset from "./benzou-preset";
 
 const globalCss = defineGlobalStyles({
   html: {
@@ -28,17 +29,10 @@ export default defineConfig({
 
   globalCss,
 
+  presets: ["@pandacss/preset-base", "@pandacss/preset-panda", benzouPreset],
+
   // Useful for theme customization
-  theme: {
-    extend: {
-      tokens: {
-        sizes: {
-          headerHeight: { value: "10vw" },
-          footerHeight: { value: "72px" },
-        },
-      },
-    },
-  },
+  theme: {},
 
   // The output directory for your css system
   outdir: "styled-system",
