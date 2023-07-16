@@ -1,47 +1,41 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from "react";
-import { Box, Form, TextArea, Button } from "./components";
-import { SendIcon } from "./SendIcon";
+import React, { useEffect, useRef } from 'react';
+import { Form, TextArea, Button } from './components';
+import { SendIcon } from './SendIcon';
 
 type Props = {
   input: string;
   handleInputChange: (
-    e:
-      | React.ChangeEvent<HTMLTextAreaElement>
-      | React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>
   ) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-export const ChatInput: React.FC<Props> = ({
-  input,
-  handleInputChange,
-  handleSubmit,
-}) => {
+export const ChatInput: React.FC<Props> = ({ input, handleInputChange, handleSubmit }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const onEnterPress = (e: any) => {
-    if (e.code === "Enter" && e.shiftKey === false) {
+  const onEnterPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.code === 'Enter' && e.shiftKey === false) {
       e.preventDefault();
-      formRef.current?.dispatchEvent(new Event("submit", { bubbles: true }));
+      formRef.current?.dispatchEvent(new Event('submit', { bubbles: true }));
     }
   };
 
   useEffect(() => {
     const textArea = textAreaRef.current;
-    textArea?.addEventListener("input", () => {
+    textArea?.addEventListener('input', () => {
       if (textArea !== null) {
-        textArea.style.height = "auto";
-        textArea.style.height = textArea.scrollHeight + "px";
+        textArea.style.height = 'auto';
+        textArea.style.height = textArea.scrollHeight + 'px';
       }
     });
-    if (input === "") {
-      textArea?.removeAttribute("style");
+    if (input === '') {
+      textArea?.removeAttribute('style');
     }
     return () => {
-      textArea?.removeEventListener("input", () => {});
+      textArea?.removeEventListener('input', () => {});
     };
   }, [input]);
 
@@ -67,13 +61,13 @@ export const ChatInput: React.FC<Props> = ({
         position="relative"
         right="40px"
         bottom="calc((40px - 30px) / 2)"
-        cursor={"pointer"}
+        cursor={'pointer'}
       >
         <SendIcon
-          fill={input === "" ? "#FFFFFF" : "#CC5AB9"}
+          fill={input === '' ? '#FFFFFF' : '#CC5AB9'}
           width={30}
           height={30}
-          shapeRendering={"geometricPrecision"}
+          shapeRendering={'geometricPrecision'}
         />
       </Button>
     </Form>
