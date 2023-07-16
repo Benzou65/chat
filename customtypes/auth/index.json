@@ -1,0 +1,20 @@
+{
+  "id": "auth",
+  "label": "Auth",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "authorized_users": {
+        "type": "Group",
+        "config": {
+          "label": "Authorized users",
+          "fields": {
+            "email": { "type": "Text", "config": { "label": "email", "placeholder": "" } }
+          }
+        }
+      }
+    }
+  }
+}

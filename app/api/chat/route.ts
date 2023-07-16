@@ -1,6 +1,7 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { Configuration, OpenAIApi } from 'openai-edge';
 import { currentUser } from '@clerk/nextjs';
+import { createClient } from '@/prismicio';
 
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({
@@ -13,9 +14,16 @@ export const runtime = 'edge';
 
 export async function POST(req: Request) {
   const user = await currentUser();
-  const authorizedUser = process.env.AUTHORIZED_USER;
+  if (!user) {
+    return new Response('You are not logged.', { status: 401 });
+  }
+  const userEmailAddresses = user?.emailAddresses.map((email) => email.emailAddress);
+  const client = createClient();
+  const auth = await client.getSingle('auth');
+  const authorizedUsers = auth.data.authorized_users.map((user) => user.email);
+  const isAuthorized = userEmailAddresses.some((user) => authorizedUsers.includes(user));
 
-  if (!user?.emailAddresses.find((email) => email.emailAddress === authorizedUser)) {
+  if (!isAuthorized) {
     return new Response('You are not authorized to use this app.', { status: 401 });
   }
 
