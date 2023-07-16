@@ -5,9 +5,10 @@ import { css } from '../styled-system/css';
 import { Chat } from './components/Chat';
 import { ChatInput } from './components/ChatInput';
 import { useChat } from 'ai/react';
+import { UserButton } from '@clerk/nextjs';
 
 export default function Home() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, setMessages } = useChat({
     initialMessages: [
       {
         id: '1',
@@ -16,6 +17,16 @@ export default function Home() {
           '[If you answer with markdown code, you should precise the langage after the first three backticks like this: ```js\nconsole.log("Hello world")\n```.]',
       },
     ],
+
+    onError: (error) => {
+      setMessages([
+        {
+          id: '666',
+          role: 'assistant',
+          content: error.message,
+        },
+      ]);
+    },
   });
 
   return (
@@ -29,6 +40,9 @@ export default function Home() {
             paddingX: '16px',
             background:
               'linear-gradient(180deg, rgba(17,24,39,1) 0%, rgba(17,24,39,1) 70%, rgba(17,24,39,0.5018382352941176) 85%, rgba(17,24,39,0) 100%);',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           })}
         >
           <h1
@@ -44,6 +58,7 @@ export default function Home() {
           >
             BenzouGPT
           </h1>
+          <UserButton afterSignOutUrl="/" />
         </header>
         <Chat messages={messages} />
         <footer
