@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "private": true,
   "scripts": {
-    "prepare": "panda codegen",
+    "prepare": "panda codegen --clean && panda cssgen --clean",
     "dev": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
