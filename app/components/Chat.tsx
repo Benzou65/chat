@@ -84,6 +84,21 @@ export const Chat: React.FC<Props> = ({ messages }) => {
                       />
                     );
                   },
+                  a({ ...props }) {
+                    return (
+                      <a
+                        target="_blank"
+                        {...props}
+                        className={css({
+                          color: 'blue.300',
+                          textDecoration: 'underline',
+                          '&:hover': {
+                            color: 'blue.500',
+                          },
+                        })}
+                      />
+                    );
+                  }
                 }}
               >
                 {message.content}
