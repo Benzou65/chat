@@ -40,7 +40,7 @@ export const ChatInput: React.FC<Props> = ({ input, handleInputChange, handleSub
   }, [input]);
 
   return (
-    <Form ref={formRef} onSubmit={handleSubmit}>
+    <Form ref={formRef} onSubmit={handleSubmit} suppressHydrationWarning>
       <TextArea
         ref={textAreaRef}
         value={input}
@@ -55,6 +55,7 @@ export const ChatInput: React.FC<Props> = ({ input, handleInputChange, handleSub
         autoFocus
         overflow="hidden"
         resize="none"
+        suppressHydrationWarning
       />
       <Button
         type="submit"
@@ -62,6 +63,7 @@ export const ChatInput: React.FC<Props> = ({ input, handleInputChange, handleSub
         right="40px"
         bottom="calc((40px - 30px) / 2)"
         cursor={'pointer'}
+        suppressHydrationWarning
       >
         <SendIcon
           fill={input === '' ? '#FFFFFF' : '#CC5AB9'}

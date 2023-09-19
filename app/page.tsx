@@ -6,6 +6,7 @@ import { Chat } from './components/Chat';
 import { ChatInput } from './components/ChatInput';
 import { useChat } from 'ai/react';
 import { UserButton } from '@clerk/nextjs';
+import { NoSSR } from './components/NoSSR';
 
 export default function Home() {
   const { messages, input, handleInputChange, handleSubmit, setMessages } = useChat({
@@ -58,7 +59,9 @@ export default function Home() {
           >
             BenzouGPT
           </h1>
-          <UserButton afterSignOutUrl="/" />
+          <NoSSR>
+            <UserButton afterSignOutUrl="/" />
+          </NoSSR>
         </header>
         <Chat messages={messages} />
         <footer
