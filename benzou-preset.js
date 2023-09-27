@@ -6,7 +6,7 @@ export default definePreset({
       tokens: {
         sizes: {
           header: { value: "10vw" },
-          footer: { value: "80px" },
+          footer: { value: "auto" },
         },
         spacing: {
           footer: { value: "100px" },
