@@ -1,7 +1,7 @@
 'use client';
 
 import { Box } from './components/components';
-import { css } from '../styled-system/css';
+import { css } from '@/styled-system/css';
 import { Chat } from './components/Chat';
 import { ChatInput } from './components/ChatInput';
 import { useChat } from 'ai/react';
@@ -71,7 +71,6 @@ export default function Home() {
             left: '50%',
             transform: 'translateX(-50%)',
             width: '100%',
-            height: 'footer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
