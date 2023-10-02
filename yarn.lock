@@ -1185,10 +1185,10 @@
   dependencies:
     imgix-url-builder "^0.0.4"
 
-"@prismicio/react@^2.7.1":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@prismicio/react/-/react-2.7.1.tgz#0e6fad55887753d5dcb0ea3e5b8a57a76cee9a4c"
-  integrity sha512-AEPL1Ng6K5+dqUG6RTARMQg3g3oGWcIjRl5bgGaJwvRP43wp3gltdZm4P/63XV3Rb4MuMdp7IRT93XGhzLwkww==
+"@prismicio/react@^2.7.3":
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/@prismicio/react/-/react-2.7.3.tgz#ff8d4e9957969c78d7de5513d5c4afc75a5db599"
+  integrity sha512-4Fr19mcJPCDCQUvCYUjphgFH6bzoNeamIVubDvDTdedYYGT+SjKCwNRIElDJIh6QMCU8zqvVAT4jAS3Tok5hlw==
   dependencies:
     "@prismicio/richtext" "^2.1.5"
 
