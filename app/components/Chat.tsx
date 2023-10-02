@@ -42,15 +42,10 @@ export const Chat: React.FC<Props> = ({ messages }) => {
                   },
                 })}
                 components={{
-                  code({ inline, className, children, ...props }) {
+                  code({ className, children }) {
                     const match = /language-(\w+)/.exec(className || '');
-                    return !inline && match ? (
-                      <SyntaxHighlighter
-                        {...props}
-                        style={vscDarkPlus}
-                        language={match[1]}
-                        wrapLongLines
-                      >
+                    return match ? (
+                      <SyntaxHighlighter style={vscDarkPlus} language={match[1]} wrapLongLines>
                         {String(children).replace(/\n$/, '')}
                       </SyntaxHighlighter>
                     ) : (
