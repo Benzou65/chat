@@ -16,11 +16,6 @@ export async function POST(req: Request) {
   if (!user) {
     return new Response('You must be logged in to use this app.', { status: 401 });
   }
-  const authorizedUser = process.env.AUTHORIZED_USER;
-
-  if (!user?.emailAddresses.find((email) => email.emailAddress === authorizedUser)) {
-    return new Response('You are not authorized to use this app.', { status: 401 });
-  }
 
   // Extract the `messages` from the body of the request
   const { messages } = await req.json();
