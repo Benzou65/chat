@@ -49,17 +49,17 @@ export const Chat: React.FC<Props> = ({ messages }) => {
                         {String(children).replace(/\n$/, '')}
                       </SyntaxHighlighter>
                     ) : (
-                      <pre
+                      <em
                         className={css({
                           display: 'inline-block',
                           backgroundColor: 'rgba(255,255,255,0.1)',
                           paddingX: '4px',
                           fontWeight: 'bold',
-                          color: 'zinc.300',
+                          color: message.role === 'assistant' ? 'zinc.300' : 'zinc.700',
                         })}
                       >
                         {String(children)}
-                      </pre>
+                      </em>
                     );
                   },
                   ol({ ...props }) {
