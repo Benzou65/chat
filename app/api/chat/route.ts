@@ -1,6 +1,7 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai';
-import { Configuration, OpenAIApi } from 'openai-edge';
+import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai-edge';
 import { currentUser } from '@clerk/nextjs';
+import { models, Model } from '@/app/components/ModelSelector';
 
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({
@@ -18,11 +19,19 @@ export async function POST(req: Request) {
   }
 
   // Extract the `messages` from the body of the request
-  const { messages } = await req.json();
+  const { messages, model }: { messages: ChatCompletionRequestMessage[]; model: Model } =
+    await req.json();
+
+  if (!model) {
+    return new Response('You must provide a model', { status: 400 });
+  }
+  if (models.map((model) => model.value).indexOf(model) === -1) {
+    return new Response('Invalid model', { status: 400 });
+  }
 
   // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo-16k',
+    model: model,
     stream: true,
     messages,
     user: user?.id,

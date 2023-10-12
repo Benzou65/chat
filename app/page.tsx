@@ -7,8 +7,11 @@ import { ChatInput } from './components/ChatInput';
 import { useChat } from 'ai/react';
 import { UserButton } from '@clerk/nextjs';
 import { NoSSR } from './components/NoSSR';
+import { useState } from 'react';
+import { ModelSelector, models } from './components/ModelSelector';
 
 export default function Home() {
+  const [model, setModel] = useState(models[0].value);
   const { messages, input, handleInputChange, handleSubmit, setMessages } = useChat({
     initialMessages: [
       {
@@ -18,7 +21,9 @@ export default function Home() {
           '[If you answer with markdown code, you should precise the langage after the first three backticks like this: ```js\nconsole.log("Hello world")\n```.]',
       },
     ],
-
+    body: {
+      model: model,
+    },
     onError: (error) => {
       setMessages([
         {
@@ -59,6 +64,7 @@ export default function Home() {
           >
             BenzouGPT
           </h1>
+          <ModelSelector onSelect={setModel} />
           <NoSSR>
             <UserButton afterSignOutUrl="/" />
           </NoSSR>
