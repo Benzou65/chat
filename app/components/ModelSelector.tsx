@@ -4,6 +4,8 @@ export enum Model {
   GPT35 = 'gpt-3.5-turbo',
   GPT3516k = 'gpt-3.5-turbo-16k',
   GPT4 = 'gpt-4',
+  GPT4Turbo = 'gpt-4-1106-preview',
+  GPT4TurboVision = 'gpt-4-1106-vision-preview',
 }
 
 export const models = [
@@ -18,6 +20,14 @@ export const models = [
   {
     name: 'GPT-4',
     value: Model.GPT4,
+  },
+  {
+    name: 'GPT-4 Turbo',
+    value: Model.GPT4Turbo,
+  },
+  {
+    name: 'GPT-4 Turbo Vision',
+    value: Model.GPT4TurboVision,
   },
 ];
 
