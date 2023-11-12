@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     const validPrompt = checkImagePrompt(prompt);
 
     const response = await openai.images.generate({
-      model: 'dall-e-2',
+      model: 'dall-e-3',
       prompt: validPrompt,
       size: '1024x1024',
       n: 1,

@@ -96,31 +96,33 @@ export default function ImagePage() {
           >
             {images.map((image) => (
               <div key={image.id} className={css({ sm: { width: '300px' } })}>
-                <img
-                  src={`data:image/png;base64, ${image.b64_json}`}
-                  alt={image.prompt}
-                  title={image.prompt}
-                />
+                <a
+                  download={`benzou-ai-${image.id}.png`}
+                  href={`data:image/png;base64, ${image.b64_json}`}
+                >
+                  <img
+                    src={`data:image/png;base64, ${image.b64_json}`}
+                    alt={image.prompt}
+                    title={image.prompt}
+                  />
+                </a>
+
                 <p className={css({ textAlign: 'center', color: 'white' })}>{image.prompt}</p>
               </div>
-            ))}
+            ))}{' '}
+            {isLoading && (
+              <div
+                className={css({
+                  width: 300,
+                  height: 300,
+                  backgroundColor: 'rgb(80, 80, 80)',
+                })}
+              >
+                <img src="/loading-placeholder.jpg" alt="" />
+                <p className={css({ textAlign: 'center', color: 'white' })}>Loading...</p>
+              </div>
+            )}
           </Box>
-          {isLoading && (
-            <div
-              className={css({
-                width: 300,
-                height: 300,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'rgb(80, 80, 80)',
-                color: 'white',
-                fontSize: '24px',
-              })}
-            >
-              <p>Loading...</p>
-            </div>
-          )}
         </div>
 
         <Footer>

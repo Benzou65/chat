@@ -32,3 +32,10 @@ export async function getImages() {
   await tx.done;
   return images;
 }
+
+export async function deleteImage(id: number) {
+  const db = await getDb();
+  const tx = db.transaction(storeName, 'readwrite');
+  tx.store.delete(id);
+  await tx.done;
+}
