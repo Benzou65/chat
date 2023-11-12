@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     model: model,
     stream: true,
     messages,
-    user: user?.id,
+    user: user.id,
   });
   // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response);

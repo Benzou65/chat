@@ -31,7 +31,7 @@ export async function POST(req: Request) {
       quality: 'standard',
       response_format: 'b64_json',
       style: 'vivid',
-      user: 'dev-user',
+      user: user.id,
     });
 
     return Response.json(response);
