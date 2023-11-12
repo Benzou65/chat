@@ -1,4 +1,4 @@
-import { Box, Svg } from './components';
+import { Box, Svg } from './styledHtml';
 import { SVGProps } from 'react';
 
 export const SendIcon = (props: SVGProps<SVGElement>) => (

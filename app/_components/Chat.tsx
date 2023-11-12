@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { css } from '@/styled-system/css';
-import { Box } from './components';
+import { Box } from './styledHtml';
 import { NoSSR } from './NoSSR';
 
 type Props = {

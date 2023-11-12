@@ -1,7 +1,7 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai-edge';
 import { currentUser } from '@clerk/nextjs';
-import { models, Model } from '@/app/components/ModelSelector';
+import { models, Model } from '@/app/_components/ModelSelector';
 
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({

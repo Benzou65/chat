@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Form, TextArea, Button } from './components';
+import { Form, TextArea, Button } from './styledHtml';
 import { SendIcon } from './SendIcon';
 import { css } from '@/styled-system/css';
 
@@ -82,7 +82,7 @@ export const ChatInput: React.FC<Props> = ({ input, handleInputChange, handleSub
       ref={formRef}
       onSubmit={handleSubmit}
       suppressHydrationWarning
-      width="min(755px, calc(100vw * 0.8))"
+      width="100%"
       position="relative"
     >
       <TextArea
