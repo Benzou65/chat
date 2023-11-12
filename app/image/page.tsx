@@ -9,6 +9,8 @@ import { SetStateAction, useEffect, useState } from 'react';
 import Image from 'next/image';
 import OpenAI from 'openai';
 import { getImages, saveImage } from '../database/idbHelper';
+import { Navigation } from '../components/Navigation';
+import { Footer } from '../components/Footer';
 
 export type Image = {
   id: number;
@@ -68,7 +70,9 @@ export default function ImagePage() {
   return (
     <main>
       <Box maxWidth="breakpoint-xl" mx="auto">
-        <Header />
+        <Header>
+          <Navigation />
+        </Header>
         <div
           className={css({
             display: 'flex',
@@ -78,20 +82,29 @@ export default function ImagePage() {
             marginTop: '16px',
           })}
         >
-          {images.map((image) => (
-            <div key={image.id} className={css({ margin: '16px' })}>
-              <img
-                src={`data:image/png;base64, ${image.b64_json}`}
-                alt={image.prompt}
-                title={image.prompt}
-                width={300}
-                height={300}
-              />
-              <p className={css({ textAlign: 'center', color: 'white', width: 300 })}>
-                {image.prompt}
-              </p>
-            </div>
-          ))}
+          <Box
+            sm={{ paddingX: '16px' }}
+            height={'auto'}
+            overflowY={'scroll'}
+            _scrollbar={{ display: 'none' }}
+            pb="footer"
+            display="flex"
+            flexWrap="wrap"
+            justifyContent="center"
+            alignItems="baseline"
+            gap={8}
+          >
+            {images.map((image) => (
+              <div key={image.id} className={css({ sm: { width: '300px' } })}>
+                <img
+                  src={`data:image/png;base64, ${image.b64_json}`}
+                  alt={image.prompt}
+                  title={image.prompt}
+                />
+                <p className={css({ textAlign: 'center', color: 'white' })}>{image.prompt}</p>
+              </div>
+            ))}
+          </Box>
           {isLoading && (
             <div
               className={css({
@@ -110,26 +123,13 @@ export default function ImagePage() {
           )}
         </div>
 
-        <footer
-          className={css({
-            position: 'fixed',
-            bottom: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background:
-              'linear-gradient(0deg, rgba(17,24,39,1) 0%, rgba(17,24,39,1) 70%, rgba(17,24,39,0.5018382352941176) 85%, rgba(17,24,39,0) 100%);',
-          })}
-        >
+        <Footer>
           <ChatInput
             input={input}
             handleInputChange={handleInputChange}
             handleSubmit={handleSubmit}
           />
-        </footer>
+        </Footer>
       </Box>
     </main>
   );

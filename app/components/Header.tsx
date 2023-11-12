@@ -1,6 +1,7 @@
 import { css } from '@/styled-system/css';
 import { NoSSR } from './NoSSR';
 import { UserButton } from '@clerk/nextjs';
+import { Box } from '@/styled-system/jsx';
 
 type Props = {
   children?: React.ReactNode;
@@ -17,7 +18,7 @@ export const Header = ({ children }: Props) => {
         background:
           'linear-gradient(180deg, rgba(17,24,39,1) 0%, rgba(17,24,39,1) 70%, rgba(17,24,39,0.5018382352941176) 85%, rgba(17,24,39,0) 100%);',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'baseline',
         justifyContent: 'space-between',
       })}
     >
@@ -32,12 +33,14 @@ export const Header = ({ children }: Props) => {
           backgroundClip: 'text',
         })}
       >
-        BenzouGPT
+        BenzouAi
       </h1>
       {children}
-      <NoSSR>
-        <UserButton afterSignOutUrl="/" />
-      </NoSSR>
+      <Box position="relative" bottom="-8px" width="32px" height="32px">
+        <NoSSR>
+          <UserButton afterSignOutUrl="/" />
+        </NoSSR>
+      </Box>
     </header>
   );
 };

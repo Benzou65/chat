@@ -25,10 +25,10 @@ export const models = [
     name: 'GPT-4 Turbo',
     value: Model.GPT4Turbo,
   },
-  {
-    name: 'GPT-4 Turbo Vision',
-    value: Model.GPT4TurboVision,
-  },
+  // {
+  //   name: 'GPT-4 Turbo Vision',
+  //   value: Model.GPT4TurboVision,
+  // },
 ];
 
 type Props = {
@@ -37,8 +37,14 @@ type Props = {
 
 export const ModelSelector = ({ onSelect }: Props) => {
   return (
-    <Box>
-      <Label htmlFor="model-select" color={'white'} paddingRight={'8px'}>
+    <Box display="flex">
+      <Label
+        htmlFor="model-select"
+        color="white"
+        paddingRight="8px"
+        display="none"
+        sm={{ display: 'block' }}
+      >
         Model:
       </Label>
       <Select

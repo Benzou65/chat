@@ -8,6 +8,8 @@ import { useChat } from 'ai/react';
 import { Header } from '../components/Header';
 import { useState } from 'react';
 import { ModelSelector, models } from '../components/ModelSelector';
+import { Navigation } from '../components/Navigation';
+import { Footer } from '../components/Footer';
 
 export default function ChatPage() {
   const [model, setModel] = useState(models[0].value);
@@ -38,29 +40,19 @@ export default function ChatPage() {
     <main>
       <Box maxWidth="breakpoint-xl" mx="auto">
         <Header>
-          <ModelSelector onSelect={setModel} />
+          <Box display="flex" alignItems="baseline" gap="1rem">
+            <Navigation />
+          </Box>
         </Header>
         <Chat messages={messages} />
-        <footer
-          className={css({
-            position: 'fixed',
-            bottom: 0,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background:
-              'linear-gradient(0deg, rgba(17,24,39,1) 0%, rgba(17,24,39,1) 70%, rgba(17,24,39,0.5018382352941176) 85%, rgba(17,24,39,0) 100%);',
-          })}
-        >
+        <Footer>
+          <ModelSelector onSelect={setModel} />
           <ChatInput
             input={input}
             handleInputChange={handleInputChange}
             handleSubmit={handleSubmit}
           />
-        </footer>
+        </Footer>
       </Box>
     </main>
   );
