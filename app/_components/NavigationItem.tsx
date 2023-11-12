@@ -18,10 +18,31 @@ export const NavigationItem = ({ href, label, isCurrentPage }: Props) => (
       WebkitTextFillColor: 'transparent',
       backgroundClip: 'text',
       filter: isCurrentPage ? 'saturate(1)' : 'saturate(0)',
-      transition: 'filter 1s ease',
       paddingX: '8px',
     })}
   >
-    <Link href={href}>{label}</Link>
+    <Link
+      href={href}
+      className={css({
+        _hover: {
+          textDecoration: 'underline',
+          textDecorationThickness: '4px',
+          textDecorationColor: '#8454C8',
+          textDecorationStyle: 'solid',
+          textDecorationSkipInk: 'auto',
+          textUnderlineOffset: '8px',
+        },
+        _focus: {
+          textDecoration: 'underline',
+          textDecorationThickness: '4px',
+          textDecorationColor: '#8454C8',
+          textDecorationStyle: 'solid',
+          textDecorationSkipInk: 'auto',
+          textUnderlineOffset: '8px',
+        },
+      })}
+    >
+      {label}
+    </Link>
   </h2>
 );
