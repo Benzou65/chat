@@ -3,7 +3,6 @@ import { NavigationItem } from './NavigationItem';
 
 export const Navigation = () => {
   const pathname = usePathname();
-  console.log('pathname', pathname);
 
   const links = [
     {
