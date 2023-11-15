@@ -8,9 +8,9 @@
     "build": "yarn tsc && yarn test:ci && next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --passWithNoTests",
-    "test:ci": "NODE_ENV=test jest --passWithNoTests --ci",
-    "test:watch": "jest --passWithNoTests --watch"
+    "test": "jest",
+    "test:ci": "NODE_ENV=test jest --ci",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.27.1",

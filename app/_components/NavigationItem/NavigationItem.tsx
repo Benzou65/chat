@@ -22,6 +22,7 @@ export const NavigationItem = ({ href, label, isCurrentPage }: Props) => (
     })}
   >
     <Link
+      data-testid="NavigationItem_link"
       href={href}
       className={css({
         _hover: {
