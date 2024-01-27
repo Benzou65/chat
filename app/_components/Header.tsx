@@ -25,7 +25,7 @@ export const Header = ({ children }: Props) => {
       <h1
         className={css({
           display: 'inline-block',
-          fontSize: '8vw',
+          fontSize: '6vw',
           fontWeight: 'bold',
           backgroundColor: '#4158D0',
           backgroundImage: 'linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)',

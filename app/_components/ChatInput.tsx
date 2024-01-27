@@ -7,13 +7,19 @@ import { css } from '@/styled-system/css';
 
 type Props = {
   input: string;
+  isDisabled: boolean;
   handleInputChange: (
     e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>
   ) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-export const ChatInput: React.FC<Props> = ({ input, handleInputChange, handleSubmit }) => {
+export const ChatInput: React.FC<Props> = ({
+  input,
+  isDisabled,
+  handleInputChange,
+  handleSubmit,
+}) => {
   const formRef = useRef<HTMLFormElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const inputMaxHeight = 300;
@@ -88,6 +94,7 @@ export const ChatInput: React.FC<Props> = ({ input, handleInputChange, handleSub
       <TextArea
         ref={textAreaRef}
         value={input}
+        disabled={isDisabled}
         onChange={handleInputChange}
         onKeyDown={onEnterPress}
         onPaste={handlePaste}
@@ -118,6 +125,7 @@ export const ChatInput: React.FC<Props> = ({ input, handleInputChange, handleSub
         })}
       />
       <Button
+        disabled={isDisabled}
         type="submit"
         position="absolute"
         right="20px"

@@ -11,7 +11,7 @@ export const NavigationItem = ({ href, label, isCurrentPage }: Props) => (
   <h2
     className={css({
       display: 'inline-block',
-      fontSize: '4vw',
+      fontSize: '3vw',
       fontWeight: 'bold',
       backgroundColor: '#4158D0',
       backgroundImage: 'linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)',

@@ -12,7 +12,7 @@ import { Footer } from '../../_components/Footer';
 
 export default function ChatPage() {
   const [model, setModel] = useState(models[0].value);
-  const { messages, input, handleInputChange, handleSubmit, setMessages } = useChat({
+  const { messages, input, isLoading, handleInputChange, handleSubmit, setMessages } = useChat({
     initialMessages: [
       {
         id: '1',
@@ -48,6 +48,7 @@ export default function ChatPage() {
           <ModelSelector onSelect={setModel} />
           <ChatInput
             input={input}
+            isDisabled={isLoading}
             handleInputChange={handleInputChange}
             handleSubmit={handleSubmit}
           />
