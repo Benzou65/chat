@@ -5750,10 +5750,10 @@ openai-edge@^1.2.2:
   resolved "https://registry.yarnpkg.com/openai-edge/-/openai-edge-1.2.2.tgz#0b1cd5aec2c366bbd25cdeba05399aa6eef73230"
   integrity sha512-C3/Ao9Hkx5uBPv9YFBpX/x59XMPgPUU4dyGg/0J2sOJ7O9D98kD+lfdOc7v/60oYo5xzMGct80uFkYLH+X2qgw==
 
-openai@^4.27.0:
-  version "4.27.0"
-  resolved "https://registry.yarnpkg.com/openai/-/openai-4.27.0.tgz#4ada66a19c369b202e8a939b8bd287e4dca036f4"
-  integrity sha512-j1ZEx9NiBpm31rxWqQTjQt1QvH/8001xHsc/pRoPjkRDYWONCb+qkR6L9C7Wl6ar72Mz1ybtn1bv6fqAoTPlKw==
+openai@^4.28.0:
+  version "4.28.0"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-4.28.0.tgz#ded00e3d98c25758b5406c9675ec27a957e00930"
+  integrity sha512-JM8fhcpmpGN0vrUwGquYIzdcEQHtFuom6sRCbbCM6CfzZXNuRk33G7KfeRAIfnaCxSpzrP5iHtwJzIm6biUZ2Q==
   dependencies:
     "@types/node" "^18.11.18"
     "@types/node-fetch" "^2.6.4"
