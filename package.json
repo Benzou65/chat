@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "panda codegen --clean && panda cssgen --clean",
     "dev": "rm -rf .next && next dev",
-    "build": "yarn tsc && yarn test:ci && next build",
+    "build": "npx tsc && npm run test:ci && next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
