@@ -105,6 +105,7 @@ export const ChatInput: React.FC<Props> = ({
         py="8px"
         width="100%"
         maxHeight={inputMaxHeight + 'px'}
+        backgroundColor={'#FFFFFF'}
         placeholder="Écrivez un message"
         rows={1}
         autoFocus

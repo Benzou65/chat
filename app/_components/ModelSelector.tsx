@@ -51,6 +51,7 @@ export const ModelSelector = ({ onSelect }: Props) => {
         name="models"
         id="model-select"
         onChange={(e) => onSelect((e.target as HTMLSelectElement).value as Model)}
+        backgroundColor={'#FFFFFF'}
       >
         {models.map((model) => (
           <Option key={model.value} value={model.value}>
