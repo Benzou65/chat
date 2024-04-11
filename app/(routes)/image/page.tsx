@@ -141,40 +141,41 @@ export default function ImagePage() {
             gap={8}
           >
             {images.map((image) => (
-              <div key={image.id} className={css({ position: 'relative', sm: { width: '300px' } })}>
-                <Box
-                  width="100%"
-                  height="100%"
-                  position="absolute"
-                  display="flex"
-                  justifyContent="end"
-                  gap="8px"
-                  padding="8px"
-                  opacity="0%"
-                  transition="opacity 0.2s ease-in-out"
-                  _hover={{ opacity: '100%', cursor: 'zoom-in' }}
-                  onClick={() => {
-                    dialog.current?.showModal();
-                    setSelectedImage(image);
-                  }}
-                >
-                  <DownloadButton
-                    filename={`benzou-ai-${image.id}.png`}
-                    base64Image={`data:image/png;base64, ${image.b64_json}`}
-                  />
-                  <DeleteButton
-                    onDelete={async () => {
-                      deleteImage(image.id);
-                      setImages((imgs) => imgs.filter((img) => img.id !== image.id));
+              <div key={image.id} className={css({ sm: { width: '300px' } })}>
+                <div className={css({ position: 'relative' })}>
+                  <Box
+                    width="100%"
+                    height="100%"
+                    position="absolute"
+                    display="flex"
+                    justifyContent="end"
+                    gap="8px"
+                    padding="8px"
+                    opacity="0%"
+                    transition="opacity 0.2s ease-in-out"
+                    _hover={{ opacity: '100%', cursor: 'zoom-in' }}
+                    onClick={() => {
+                      dialog.current?.showModal();
+                      setSelectedImage(image);
                     }}
+                  >
+                    <DownloadButton
+                      filename={`benzou-ai-${image.id}.png`}
+                      base64Image={`data:image/png;base64, ${image.b64_json}`}
+                    />
+                    <DeleteButton
+                      onDelete={async () => {
+                        deleteImage(image.id);
+                        setImages((imgs) => imgs.filter((img) => img.id !== image.id));
+                      }}
+                    />
+                  </Box>
+                  <img
+                    src={`data:image/png;base64, ${image.b64_json}`}
+                    alt={image.prompt}
+                    title={image.prompt}
                   />
-                </Box>
-                <img
-                  src={`data:image/png;base64, ${image.b64_json}`}
-                  alt={image.prompt}
-                  title={image.prompt}
-                />
-
+                </div>
                 <p className={css({ textAlign: 'center', color: 'white' })}>{image.prompt}</p>
               </div>
             ))}
