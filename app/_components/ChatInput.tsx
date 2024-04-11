@@ -106,7 +106,7 @@ export const ChatInput: React.FC<Props> = ({
         width="100%"
         maxHeight={inputMaxHeight + 'px'}
         backgroundColor={'#FFFFFF'}
-        placeholder="Écrivez un message"
+        placeholder="Ask me anything..."
         rows={1}
         autoFocus
         overflowY="auto"
