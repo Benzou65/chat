@@ -31,6 +31,7 @@ export const Header = ({ children }: Props) => {
           backgroundImage: 'linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
+          userSelect: 'none',
         })}
       >
         BenzouAi

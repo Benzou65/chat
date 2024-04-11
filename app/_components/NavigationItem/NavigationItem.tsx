@@ -19,6 +19,7 @@ export const NavigationItem = ({ href, label, isCurrentPage }: Props) => (
       backgroundClip: 'text',
       filter: isCurrentPage ? 'saturate(1)' : 'saturate(0)',
       paddingX: '8px',
+      userSelect: 'none',
     })}
   >
     <Link
