@@ -65,7 +65,7 @@ export const ChatInput: React.FC<Props> = ({
       textArea.style.height = 'auto';
       textArea.style.height =
         textArea.scrollHeight < inputMaxHeight
-          ? textArea.scrollHeight + 'px'
+          ? textArea.scrollHeight + 2 + 'px'
           : inputMaxHeight + 'px';
     }
   };
