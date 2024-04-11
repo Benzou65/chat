@@ -109,7 +109,6 @@ export default function ImagePage() {
             {selectedImage && (
               <Box
                 cursor="zoom-out"
-                width="100vmin"
                 height="100vmin"
                 position="fixed"
                 top="50%"
@@ -124,6 +123,11 @@ export default function ImagePage() {
                   src={`data:image/png;base64, ${selectedImage.b64_json}`}
                   alt={selectedImage.prompt}
                   title={selectedImage.prompt}
+                  className={css({
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                  })}
                 />
               </Box>
             )}
