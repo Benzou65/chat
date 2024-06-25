@@ -3,32 +3,22 @@ import { Option, Select, Label, Box } from './styledHtml';
 export enum Model {
   GPT35 = 'gpt-3.5-turbo',
   GPT3516k = 'gpt-3.5-turbo-16k',
+  GPT35Turbo = 'gpt-3.5-turbo-0125',
   GPT4 = 'gpt-4',
+  GPT4o = 'gpt-4o',
   GPT4Turbo = 'gpt-4-1106-preview',
   GPT4TurboVision = 'gpt-4-1106-vision-preview',
 }
 
 export const models = [
   {
-    name: 'GPT-3.5',
-    value: Model.GPT35,
+    name: 'GPT-4o',
+    value: Model.GPT4o,
   },
   {
-    name: 'GPT-3.5 - 16k',
-    value: Model.GPT3516k,
+    name: 'GPT-3.5 Turbo',
+    value: Model.GPT35Turbo,
   },
-  {
-    name: 'GPT-4',
-    value: Model.GPT4,
-  },
-  {
-    name: 'GPT-4 Turbo',
-    value: Model.GPT4Turbo,
-  },
-  // {
-  //   name: 'GPT-4 Turbo Vision',
-  //   value: Model.GPT4TurboVision,
-  // },
 ];
 
 type Props = {
