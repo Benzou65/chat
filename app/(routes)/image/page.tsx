@@ -49,7 +49,7 @@ export default function ImagePage() {
         body: JSON.stringify({ prompt: input }),
       });
       const data = (await response.json()) as OpenAI.Images.ImagesResponse;
-      console.log(data);
+
       const newImage = {
         id: data.created,
         b64_json: data.data[0].b64_json ?? '',

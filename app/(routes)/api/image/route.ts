@@ -1,4 +1,4 @@
-import { currentUser } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
@@ -14,8 +14,8 @@ function checkImagePrompt(prompt: string) {
 
 export async function POST(req: Request) {
   try {
-    const user = await currentUser();
-    if (!user) {
+    const { userId } = auth();
+    if (!userId) {
       return new Response('You must be logged in to use this app.', { status: 401 });
     }
 
@@ -31,13 +31,13 @@ export async function POST(req: Request) {
       quality: 'standard',
       response_format: 'b64_json',
       style: 'vivid',
-      user: user.id,
+      user: userId,
     });
 
     return Response.json(response);
   } catch (error) {
     if (error instanceof OpenAI.APIError) {
-      console.log(error);
+      console.error(error);
       return new Response(error.message, { status: error.status });
     }
   }

@@ -24,7 +24,7 @@ export default function ChatPage() {
     body: {
       model: model,
     },
-    onError: (error) => {
+    onError: (error: { message: string }) => {
       setMessages([
         {
           id: '666',

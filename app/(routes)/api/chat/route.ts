@@ -1,6 +1,6 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai-edge';
-import { currentUser } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 import { models, Model } from '@/app/_components/ModelSelector';
 
 // Create an OpenAI API client (that's edge friendly!)
@@ -13,8 +13,8 @@ const openai = new OpenAIApi(config);
 export const runtime = 'edge';
 
 export async function POST(req: Request) {
-  const user = await currentUser();
-  if (!user) {
+  const { userId } = auth();
+  if (!userId) {
     return new Response('You must be logged in to use this app.', { status: 401 });
   }
 
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     model: model,
     stream: true,
     messages,
-    user: user.id,
+    user: userId,
   });
   // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response);
