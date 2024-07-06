@@ -1,16 +1,10 @@
-import { OpenAIStream, StreamingTextResponse } from 'ai';
-import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai-edge';
+import { streamText, type CoreMessage } from 'ai';
+
 import { auth } from '@clerk/nextjs/server';
 import { models, Model } from '@/app/_components/ModelSelector';
+import { openai } from '@ai-sdk/openai';
 
-// Create an OpenAI API client (that's edge friendly!)
-const config = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(config);
-
-// IMPORTANT! Set the runtime to edge
-export const runtime = 'edge';
+export const maxDuration = 30;
 
 export async function POST(req: Request) {
   const { userId } = auth();
@@ -19,8 +13,7 @@ export async function POST(req: Request) {
   }
 
   // Extract the `messages` from the body of the request
-  const { messages, model }: { messages: ChatCompletionRequestMessage[]; model: Model } =
-    await req.json();
+  const { messages, model }: { messages: CoreMessage[]; model: Model } = await req.json();
 
   if (!model) {
     return new Response('You must provide a model', { status: 400 });
@@ -29,15 +22,10 @@ export async function POST(req: Request) {
     return new Response('Invalid model', { status: 400 });
   }
 
-  // Ask OpenAI for a streaming chat completion given the prompt
-  const response = await openai.createChatCompletion({
-    model: model,
-    stream: true,
+  const result = await streamText({
+    model: openai(model),
     messages,
-    user: userId,
   });
-  // Convert the response into a friendly text-stream
-  const stream = OpenAIStream(response);
-  // Respond with the stream
-  return new StreamingTextResponse(stream);
+
+  return result.toAIStreamResponse();
 }

@@ -13,6 +13,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.34",
     "@clerk/nextjs": "^5.1.6",
     "ai": "^3.2.15",
     "idb": "^8.0.0",
