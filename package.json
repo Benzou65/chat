@@ -13,9 +13,9 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^0.0.36",
+    "@ai-sdk/openai": "^0.0.37",
     "@clerk/nextjs": "^5.2.4",
-    "ai": "^3.2.22",
+    "ai": "^3.2.32",
     "idb": "^8.0.0",
     "next": "^14.2.5",
     "openai": "^4.52.7",
@@ -31,7 +31,7 @@
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.12",
-    "@types/node": "20.14.10",
+    "@types/node": "20.14.11",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-syntax-highlighter": "^15.5.13",
