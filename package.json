@@ -18,7 +18,7 @@
     "ai": "^3.2.32",
     "idb": "^8.0.0",
     "next": "^14.2.5",
-    "openai": "^4.52.7",
+    "openai": "^4.53.2",
     "openai-edge": "^1.2.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -26,7 +26,7 @@
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
-    "@pandacss/dev": "^0.42.0",
+    "@pandacss/dev": "^0.44.0",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
@@ -35,7 +35,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
     "eslint": "8.57.0",
     "eslint-config-next": "^14.2.5",
     "eslint-config-prettier": "^9.1.0",
