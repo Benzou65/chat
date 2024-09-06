@@ -1,4 +1,4 @@
-import { streamText, type CoreMessage } from 'ai';
+import { streamText, type CoreMessage, LanguageModel } from 'ai';
 
 import { auth } from '@clerk/nextjs/server';
 import { models, Model } from '@/app/_components/ModelSelector';
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
   }
 
   const result = await streamText({
-    model: openai(model),
+    model: openai(model) as LanguageModel,
     messages,
   });
 
