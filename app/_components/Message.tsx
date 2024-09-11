@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 import { Box } from '@/styled-system/jsx';
@@ -20,7 +21,7 @@ enum Role {
   Function = 'function',
 }
 
-export const Message = ({ message }: Props) => (
+export const Message = memo(({ message }: Props) => (
   <Box
     display={message.role === Role.System ? 'none' : 'block'}
     key={message.id}
@@ -58,4 +59,6 @@ export const Message = ({ message }: Props) => (
       {message.content}
     </ReactMarkdown>
   </Box>
-);
+));
+
+Message.displayName = 'Message';
