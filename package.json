@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.70",
-    "@clerk/nextjs": "^5.7.5",
+    "@clerk/nextjs": "^6.0.2",
     "ai": "^3.4.21",
     "idb": "^8.0.0",
     "next": "^14.2.15",
