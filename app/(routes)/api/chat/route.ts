@@ -7,7 +7,7 @@ import { openai } from '@ai-sdk/openai';
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
-  const { userId } = auth();
+  const { userId } = await auth();
   if (!userId) {
     return new Response('You must be logged in to use this app.', { status: 401 });
   }
