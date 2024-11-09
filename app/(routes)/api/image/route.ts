@@ -14,7 +14,7 @@ function checkImagePrompt(prompt: string) {
 
 export async function POST(req: Request) {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
     if (!userId) {
       return new Response('You must be logged in to use this app.', { status: 401 });
     }

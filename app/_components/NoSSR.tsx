@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { type JSX } from 'react';
 
 interface INoSSR {
   children: React.ReactNode;
