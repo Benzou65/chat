@@ -14,9 +14,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^0.0.70",
-    "@clerk/nextjs": "^6.3.0",
-    "ai": "^3.4.21",
+    "@ai-sdk/openai": "^0.0.72",
+    "@clerk/nextjs": "^6.3.4",
+    "ai": "^3.4.33",
     "idb": "^8.0.0",
     "next": "15.0.3",
     "openai": "^4.71.1",
@@ -31,7 +31,7 @@
     "@next/eslint-plugin-next": "^15.0.3",
     "@pandacss/dev": "^0.47.0",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.2",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.14",
