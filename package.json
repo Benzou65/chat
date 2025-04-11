@@ -11,7 +11,7 @@
     "test": "jest",
     "test:ci": "NODE_ENV=test jest --ci",
     "test:watch": "jest --watch",
-    "typecheck": "tsc --noEmit"
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.70",
