@@ -15,16 +15,15 @@ export const Code = ({ className, children, color }: Props) => {
       {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
   ) : (
-    <em
+    <p
       className={css({
-        display: 'inline-block',
-        backgroundColor: 'rgba(255,255,255,0.1)',
+        display: 'block',
         paddingX: '4px',
-        fontWeight: 'bold',
-        color: color,
+        color: 'white',
+        fontFamily: 'Inter',
       })}
     >
       {String(children)}
-    </em>
+    </p>
   );
 };

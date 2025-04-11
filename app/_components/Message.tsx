@@ -54,6 +54,13 @@ export const Message = memo(({ message }: Props) => (
         a({ ...props }) {
           return <Anchor {...props} />;
         },
+        pre({ children, ...props }) {
+          return (
+            <pre style={{ whiteSpace: 'pre-wrap' }} {...props}>
+              {children}
+            </pre>
+          );
+        },
       }}
     >
       {message.content}
