@@ -52,7 +52,7 @@ export default function ImagePage() {
 
       const newImage = {
         id: data.created,
-        b64_json: data.data[0].b64_json ?? '',
+        b64_json: data.data?.[0]?.b64_json ?? '',
         prompt: input,
         created_at: new Date(data.created * 1000),
       };
