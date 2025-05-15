@@ -5,25 +5,27 @@ import { css } from '@/styled-system/css';
 type Props = {
   className?: string;
   children: React.ReactNode;
-  color?: string;
 };
 
-export const Code = ({ className, children, color }: Props) => {
+export const Code = ({ className, children }: Props) => {
   const match = /language-(\w+)/.exec(className || '');
   return match ? (
-    <SyntaxHighlighter style={vscDarkPlus} language={match[1]} wrapLongLines>
+    <SyntaxHighlighter
+      style={vscDarkPlus}
+      language={match[1]}
+      wrapLongLines
+      customStyle={{ borderRadius: '16px' }}
+    >
       {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
   ) : (
-    <p
-      className={css({
-        display: 'block',
-        paddingX: '4px',
-        color: 'white',
-        fontFamily: 'Inter',
-      })}
+    <SyntaxHighlighter
+      style={vscDarkPlus}
+      language="text"
+      wrapLongLines
+      customStyle={{ borderRadius: '8px', padding: '0.4em 1em', display: 'inline-flex' }}
     >
-      {String(children)}
-    </p>
+      {String(children).replace(/\n$/, '')}
+    </SyntaxHighlighter>
   );
 };

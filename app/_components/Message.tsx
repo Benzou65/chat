@@ -36,30 +36,16 @@ export const Message = memo(({ message }: Props) => (
     <ReactMarkdown
       components={{
         code({ className, children }) {
-          return (
-            <Code
-              className={className}
-              color={message.role === Role.Assistant ? 'zinc.300' : 'zinc.700'}
-            >
-              {children}
-            </Code>
-          );
+          return <Code className={className}>{children}</Code>;
         },
-        ol({ ...props }) {
-          return <OrderedList {...props} />;
+        ol() {
+          return <OrderedList />;
         },
-        ul({ ...props }) {
-          return <UnorderedList {...props} />;
+        ul() {
+          return <UnorderedList />;
         },
-        a({ ...props }) {
-          return <Anchor {...props} />;
-        },
-        pre({ children, ...props }) {
-          return (
-            <pre style={{ whiteSpace: 'pre-wrap' }} {...props}>
-              {children}
-            </pre>
-          );
+        a() {
+          return <Anchor />;
         },
       }}
     >
