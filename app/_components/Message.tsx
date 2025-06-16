@@ -38,14 +38,14 @@ export const Message = memo(({ message }: Props) => (
         code({ className, children }) {
           return <Code className={className}>{children}</Code>;
         },
-        ol() {
-          return <OrderedList />;
+        ol({ ...props }) {
+          return <OrderedList {...props} />;
         },
-        ul() {
-          return <UnorderedList />;
+        ul({ ...props }) {
+          return <UnorderedList {...props} />;
         },
-        a() {
-          return <Anchor />;
+        a({ ...props }) {
+          return <Anchor {...props} />;
         },
       }}
     >
