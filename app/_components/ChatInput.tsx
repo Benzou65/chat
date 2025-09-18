@@ -27,7 +27,15 @@ export const ChatInput: React.FC<Props> = ({
   const onEnterPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.code === 'Enter' && e.shiftKey === false) {
       e.preventDefault();
-      formRef.current?.dispatchEvent(new Event('submit', { bubbles: true }));
+      const form = formRef.current;
+      if (form) {
+        const syntheticEvent = {
+          preventDefault: () => {},
+          currentTarget: form,
+          target: form,
+        } as unknown as React.FormEvent<HTMLFormElement>;
+        handleSubmit(syntheticEvent);
+      }
     }
   };
 
@@ -72,14 +80,22 @@ export const ChatInput: React.FC<Props> = ({
 
   useEffect(() => {
     const textArea = textAreaRef.current;
-    textArea?.addEventListener('input', () => {
+    const inputHandler = () => {
       handleTextAreaHeight();
-    });
+    };
+
+    if (textArea) {
+      textArea.addEventListener('input', inputHandler);
+    }
+
     if (input === '') {
       textArea?.removeAttribute('style');
     }
+
     return () => {
-      textArea?.removeEventListener('input', () => {});
+      if (textArea) {
+        textArea.removeEventListener('input', inputHandler);
+      }
     };
   }, [input]);
 
