@@ -1,4 +1,4 @@
-import { streamText, type CoreMessage } from 'ai';
+import { streamText, UIMessage, convertToModelMessages } from 'ai';
 
 import { auth } from '@clerk/nextjs/server';
 import { models, Model } from '@/app/_components/ModelSelector';
@@ -13,19 +13,19 @@ export async function POST(req: Request) {
   }
 
   // Extract the `messages` from the body of the request
-  const { messages, model }: { messages: CoreMessage[]; model: Model } = await req.json();
+  const { messages, model }: { messages: UIMessage[]; model?: Model } = await req.json();
 
-  if (!model) {
-    return new Response('You must provide a model', { status: 400 });
-  }
-  if (models.map((model) => model.value).indexOf(model) === -1) {
+  // Use default model if not provided
+  const selectedModel = model || models[0].value;
+
+  if (models.map((m) => m.value).indexOf(selectedModel) === -1) {
     return new Response('Invalid model', { status: 400 });
   }
 
-  const result = await streamText({
-    model: openai(model),
-    messages,
+  const result = streamText({
+    model: openai(selectedModel),
+    messages: convertToModelMessages(messages),
   });
 
-  return result.toDataStreamResponse();
+  return result.toUIMessageStreamResponse();
 }
