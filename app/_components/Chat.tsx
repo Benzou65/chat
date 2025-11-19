@@ -1,9 +1,9 @@
-import { Message as TMessage } from 'ai/react';
+import { UIMessage } from '@ai-sdk/react';
 import { Box } from './styledHtml';
 import { Message } from './Message';
 
 type Props = {
-  messages: TMessage[];
+  messages: UIMessage[];
 };
 
 export const Chat: React.FC<Props> = ({ messages }) => {

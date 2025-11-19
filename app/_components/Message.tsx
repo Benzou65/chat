@@ -8,10 +8,10 @@ const Code = dynamic(() => import('./chatHtmlElements').then((mod) => mod.Code))
 const OrderedList = dynamic(() => import('./chatHtmlElements').then((mod) => mod.OrderedList));
 const UnorderedList = dynamic(() => import('./chatHtmlElements').then((mod) => mod.UnorderedList));
 
-import type { Message as TMessage } from 'ai/react';
+import type { UIMessage } from '@ai-sdk/react';
 
 type Props = {
-  message: TMessage;
+  message: UIMessage;
 };
 
 enum Role {
@@ -21,37 +21,45 @@ enum Role {
   Function = 'function',
 }
 
-export const Message = memo(({ message }: Props) => (
-  <Box
-    display={message.role === Role.System ? 'none' : 'block'}
-    key={message.id}
-    alignSelf={message.role === Role.Assistant ? 'flex-start' : 'flex-end'}
-    padding="16px"
-    marginY="8px"
-    borderRadius="20px"
-    backgroundColor={message.role === Role.Assistant ? 'gray.700' : 'blue.500'}
-    maxWidth="90%"
-    color="white"
-  >
-    <ReactMarkdown
-      components={{
-        code({ className, children }) {
-          return <Code className={className}>{children}</Code>;
-        },
-        ol({ ...props }) {
-          return <OrderedList {...props} />;
-        },
-        ul({ ...props }) {
-          return <UnorderedList {...props} />;
-        },
-        a({ ...props }) {
-          return <Anchor {...props} />;
-        },
-      }}
+export const Message = memo(({ message }: Props) => {
+  // Extract text content from message parts
+  const textContent = message.parts
+    .filter((part) => part.type === 'text')
+    .map((part) => (part as { type: 'text'; text: string }).text)
+    .join('');
+
+  return (
+    <Box
+      display={message.role === Role.System ? 'none' : 'block'}
+      key={message.id}
+      alignSelf={message.role === Role.Assistant ? 'flex-start' : 'flex-end'}
+      padding="16px"
+      marginY="8px"
+      borderRadius="20px"
+      backgroundColor={message.role === Role.Assistant ? 'gray.700' : 'blue.500'}
+      maxWidth="90%"
+      color="white"
     >
-      {message.content}
-    </ReactMarkdown>
-  </Box>
-));
+      <ReactMarkdown
+        components={{
+          code({ className, children }) {
+            return <Code className={className}>{children}</Code>;
+          },
+          ol({ ...props }) {
+            return <OrderedList {...props} />;
+          },
+          ul({ ...props }) {
+            return <UnorderedList {...props} />;
+          },
+          a({ ...props }) {
+            return <Anchor {...props} />;
+          },
+        }}
+      >
+        {textContent}
+      </ReactMarkdown>
+    </Box>
+  );
+});
 
 Message.displayName = 'Message';

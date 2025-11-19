@@ -2,8 +2,12 @@
   "name": "chat",
   "version": "1.2.0",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
-    "prepare": "panda codegen --clean && panda cssgen --clean",
+    "prepare": "panda codegen",
     "dev": "rm -rf .next && next dev --turbopack",
     "build": "next build",
     "start": "next start",
@@ -14,12 +18,13 @@
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^1.3.22",
+    "@ai-sdk/openai": "^2.0.68",
+    "@ai-sdk/react": "^2.0.95",
     "@clerk/nextjs": "^6.33.2",
-    "ai": "^4.3.16",
+    "ai": "^5.0.95",
     "idb": "^8.0.3",
     "next": "^15.5.4",
-    "openai": "^5.8.2",
+    "openai": "^6.9.1",
     "openai-edge": "^1.2.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -29,7 +34,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.5.4",
-    "@pandacss/dev": "^0.54.0",
+    "@pandacss/dev": "^1.5.1",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
