@@ -18,8 +18,8 @@
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^2.0.77",
-    "@ai-sdk/react": "^2.0.106",
+    "@ai-sdk/openai": "^2.0.79",
+    "@ai-sdk/react": "^2.0.109",
     "@clerk/nextjs": "^6.35.6",
     "ai": "^5.0.95",
     "idb": "^8.0.3",
