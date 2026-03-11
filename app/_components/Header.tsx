@@ -39,7 +39,7 @@ export const Header = ({ children }: Props) => {
       {children}
       <Box position="relative" bottom="-8px" width="32px" height="32px">
         <NoSSR>
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
         </NoSSR>
       </Box>
     </header>
