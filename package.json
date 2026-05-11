@@ -24,7 +24,7 @@
     "ai": "^6.0.116",
     "idb": "^8.0.3",
     "next": "^16.2.4",
-    "openai": "^6.35.0",
+    "openai": "^6.37.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-markdown": "^10.1.0",
@@ -48,8 +48,8 @@
     "eslint-config-next": "^16.2.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-testing-library": "^7.16.2",
-    "jest": "^30.3.0",
-    "jest-environment-jsdom": "^30.3.0",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "prettier": "^3.8.3",
     "typescript": "^6.0.3"
   }
