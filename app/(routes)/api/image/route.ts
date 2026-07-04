@@ -24,13 +24,11 @@ export async function POST(req: Request) {
     const validPrompt = checkImagePrompt(prompt);
 
     const response = await openai.images.generate({
-      model: 'dall-e-3',
+      model: 'gpt-image-1',
       prompt: validPrompt,
       size: '1024x1024',
       n: 1,
-      quality: 'standard',
-      response_format: 'b64_json',
-      style: 'vivid',
+      quality: 'auto',
       user: userId,
     });
 
