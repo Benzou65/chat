@@ -1,40 +1,36 @@
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
 import testingLibrary from 'eslint-plugin-testing-library';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import js from '@eslint/js';
-import { FlatCompat } from '@eslint/eslintrc';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
+import prettier from 'eslint-config-prettier';
 
 const config = [
-  ...compat.extends(
-    'next/core-web-vitals',
-    'plugin:@typescript-eslint/recommended',
-    'next',
-    'prettier'
-  ),
+  { ignores: ['styled-system/**'] },
+  ...nextCoreWebVitals,
+  ...nextTypescript,
+  prettier,
+  // Workaround for eslint-plugin-react's legacy context.getFilename() version
+  // auto-detection, removed in ESLint v10 (jsx-eslint/eslint-plugin-react#3977).
   {
-    plugins: {
-      '@typescript-eslint': typescriptEslint,
-      'testing-library': testingLibrary,
+    settings: {
+      react: { version: '19' },
     },
+  },
+  {
     rules: {
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
-  ...compat.extends('plugin:testing-library/react').map((config) => ({
-    ...config,
+  {
     files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
-  })),
+    plugins: {
+      'testing-library': testingLibrary,
+    },
+    rules: {
+      ...testingLibrary.configs.react.rules,
+    },
+  },
 ];
 
 export default config;
