@@ -18,7 +18,7 @@
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^4.0.7",
+    "@ai-sdk/openai": "^4.0.8",
     "@ai-sdk/react": "^4.0.16",
     "@clerk/nextjs": "^7.3.3",
     "ai": "^7.0.15",
