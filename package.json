@@ -18,9 +18,9 @@
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^4.0.8",
-    "@ai-sdk/react": "^4.0.16",
-    "@clerk/nextjs": "^7.3.3",
+    "@ai-sdk/openai": "^4.0.11",
+    "@ai-sdk/react": "^4.0.23",
+    "@clerk/nextjs": "^7.5.17",
     "ai": "^7.0.15",
     "idb": "^8.0.3",
     "next": "^16.2.6",
@@ -32,7 +32,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/eslintrc": "^3.3.6",
     "@eslint/js": "^10.0.1",
     "@next/eslint-plugin-next": "^16.2.6",
     "@pandacss/dev": "^1.11.1",
@@ -41,7 +41,7 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^26.1.0",
+    "@types/node": "^26.1.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.0",
     "@types/react-syntax-highlighter": "^15.5.13",
@@ -52,7 +52,7 @@
     "eslint-plugin-testing-library": "^7.16.2",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
-    "prettier": "^3.8.3",
+    "prettier": "^3.9.5",
     "typescript": "^6.0.3"
   }
 }
